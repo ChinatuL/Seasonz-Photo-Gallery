@@ -1,0 +1,35 @@
+$primary-brown: rgb(145, 104, 104);
+$neutral: #edb;
+$white: #ffffff;
+$dull-white: #f9f9f9;
+$black: #000000;
+$transparent: #00000080;
+$input-border: #00000033;
+
+:root {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin flex($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+}
+
+@mixin transitionEase {
+    transition: all 0.3s ease-in-out;
+}
+
+@mixin menuTransition {
+    transition: transform 0.5s ease-in-out;
+}
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./images/favicon-16x16.png"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fasthand&family=Montserrat:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/main.css" />
+        <title>Seasonz</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav class="nav">
+                    <div class="nav__logo">
+                        <a href="#">
+                            <img
+                                src="./images/logo.svg"
+                                alt="Logo"
+                                class="nav__logo-img"
+                            />
+                            <span class="nav__logo-text">SEASONz</span>
+                        </a>
+                    </div>
+                    <ul class="nav__list" id="nav__list">
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Autumn</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Spring</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Summer</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#" class="nav__link">Winter</a>
+                        </li>
+                    </ul>
+                    <button
+                        class="nav__toggler-btn"
+                        id="navbar__btn"
+                        aria-label="Navbar toggler"
+                        aria-expanded="false"
+                    >
+                        <div
+                            class="nav__toggler-harmburger"
+                            id="nav__harmburger"
+                        ></div>
+                    </button>
+                </nav>
+                <div class="hero">
+                    <div class="hero__images">
+                        <img
+                            src="./images/hero-autumn.jpg"
+                            alt="hero image"
+                            class="hero__images-img"
+                        />
+                        <img
+                            src="./images/hero-spring.jpg"
+                            alt="hero image"
+                            class="hero__images-img"
+                        />
+                        <img
+                            src="./images/hero-summer.jpg"
+                            alt="hero image"
+                            class="hero__images-img"
+                        />
+                        <img
+                            src="./images/hero-winter.jpg"
+                            alt="hero image"
+                            class="hero__images-img"
+                        />
+                    </div>
+                    <div class="hero__text">
+                        <h1 class="hero__text-heading">
+                            See Nature's beauty in the seasons
+                        </h1>
+                        <p class="hero__text-quote">
+                            "Nature always wears the colors of the spirit."
+                            --Ralph Waldo Emerson
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <section class="section section__filters">
+                    <h2 class="subheading">Filter</h2>
+                    <div class="filters">
+                        <form autocomplete="off" class="filters__form">
+                            <div class="filters__form-control">
+                                <input
+                                    type="text"
+                                    id="filter"
+                                    class="filters__form-input"
+                                    placeholder="Filter pictures"
+                                    aria-label="Filter pictures"
+                                />
+                                <button type="submit" class="filters__form-btn">
+                                    <svg
+                                        width="24px"
+                                        height="24px"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M15 10.5C15 12.9853 12.9853 15 10.5 15C8.01472 15 6 12.9853 6 10.5C6 8.01472 8.01472 6 10.5 6C12.9853 6 15 8.01472 15 10.5ZM14.1793 15.2399C13.1632 16.0297 11.8865 16.5 10.5 16.5C7.18629 16.5 4.5 13.8137 4.5 10.5C4.5 7.18629 7.18629 4.5 10.5 4.5C13.8137 4.5 16.5 7.18629 16.5 10.5C16.5 11.8865 16.0297 13.1632 15.2399 14.1792L20.0304 18.9697L18.9697 20.0303L14.1793 15.2399Z"
+                                            fill="#00000033"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            <ul class="filters__suggestions">
+                                
+                            </ul>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            
+        </main>
+        <footer></footer>
+        <script src="./js/script.js"></script>
+    </body>
+</html>

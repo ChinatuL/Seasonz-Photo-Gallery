@@ -1,0 +1,65 @@
+.section__filters {
+    position: relative;
+    @include flex(column);
+    align-items: center;
+
+    .filters {
+      position: absolute;
+      top: 3rem;
+        width: 100%;
+        margin-bottom: 2rem;
+
+        &__form {
+            @include flex(column);
+            align-items: center;
+
+            &-control {
+                @include flex(row);
+                width: 100%;
+            }
+
+            &-input {
+                padding: 0.8rem 1rem;
+                width: 40%;
+                border: 1px solid $input-border;
+                border-radius: 0.5rem;
+                font: inherit;
+                background-color: $dull-white;
+
+                &:focus,
+                &:active {
+                    outline: none;
+                    border: 1px solid $transparent;
+                    border-radius: 0.5rem 0.5rem 0 0;
+                    background-color: $white;
+                }
+            }
+
+            &-btn {
+                margin-left: -2rem;
+                border: none;
+                background: transparent;
+                padding: 0 0.5rem 0 0;
+                cursor: pointer;
+                @include transitionEase;
+
+                &:hover > svg > path {
+                    fill: $black;
+                }
+            }
+        }
+
+        &__suggestions {
+            position: relative;
+            z-index: 9;
+            display: none;
+            width: 40%;
+            padding: 1rem 1rem;
+            border-width: 0 1px 1px 1px;
+            border-color: $transparent;
+            border-style: solid;
+            border-radius: 0 0 0.5rem 0.5rem;
+            background-color: $white;
+        }
+    }
+}

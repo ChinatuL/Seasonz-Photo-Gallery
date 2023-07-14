@@ -1,0 +1,35 @@
+@import "config";
+@import "header";
+@import "responsive";
+@import "filters";
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+  max-width: 100%;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  position: relative;
+  top: 100vh;
+  @include flex(column)
+}
+
+.section {
+  margin-top: 2rem;
+}
+
+.subheading {
+  font-weight: 400;
+}
