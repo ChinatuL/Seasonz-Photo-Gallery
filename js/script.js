@@ -275,3 +275,65 @@ const showSlides = () => {
 showSlides(slideIndex);
 
 /*************************************** FILTERS **************************************/
+const inputElem = document.querySelector(".filters__form-input");
+const submitBtn = document.querySelector(".filters__form-btn");
+const filtersList = document.querySelector(".filters__list");
+let suggestions = [];
+
+inputElem.addEventListener("keyup", () => {
+    const inputValue = inputElem.value;
+
+    clearSuggestions();
+    filtersList.classList.remove("show");
+
+    if (inputValue.trim()) {
+        submitBtn.removeAttribute("disabled");
+        suggestions = filters.filter((suggestion) => {
+            return suggestion
+                .toLowerCase()
+                .startsWith(inputValue.toLowerCase().trim());
+        });
+        displaySuggestions(inputValue);
+    }
+    selectFilter(inputElem);
+});
+
+function displaySuggestions(input) {
+    suggestions.map((word) => {
+        let filtersListItem = document.createElement("li");
+        filtersListItem.classList.add("filters__item");
+
+        let match = "<b>" + word.substring(0, input.trim().length) + "</b>";
+        match += word.substring(input.trim().length);
+        filtersListItem.innerHTML = match;
+
+        filtersList.append(filtersListItem);
+        filtersList.classList.add("show");
+    });
+}
+
+function clearSuggestions() {
+    let suggestionsElem = document.querySelectorAll(".filters__item");
+    suggestionsElem.forEach((suggestion) => suggestion.remove());
+}
+
+function selectFilter(input) {
+    let suggestionsElem = document.querySelectorAll(".filters__item");
+    suggestionsElem.forEach((suggestion) =>
+        suggestion.addEventListener("click", (e) => {
+            input.value = e.target.innerText;
+            clearSuggestions();
+            filtersList.classList.remove("show");
+        })
+    );
+}
+
+/****************************************** RENDER IMAGES **********************************************/
+const form = document.querySelector(".filters__form");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (inputElem.value.trim()) {
+        return true;
+    }
+});

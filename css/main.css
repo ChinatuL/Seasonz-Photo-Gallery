@@ -302,17 +302,28 @@ header .hero__text-quote {
 .section__filters .filters__form-btn:hover > svg > path {
   fill: #000000;
 }
-.section__filters .filters__suggestions {
+.section__filters .filters__list {
   position: relative;
   z-index: 9;
   display: none;
   width: 40%;
-  padding: 1rem 1rem;
+  padding: 1rem 0;
   border-width: 0 1px 1px 1px;
   border-color: rgba(0, 0, 0, 0.5019607843);
   border-style: solid;
   border-radius: 0 0 0.5rem 0.5rem;
   background-color: #ffffff;
+}
+.section__filters .filters__list.show {
+  display: block;
+}
+.section__filters .filters__item {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+.section__filters .filters__item:hover {
+  background-color: #f2f2f2;
 }
 
 body {

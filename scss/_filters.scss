@@ -49,17 +49,31 @@
             }
         }
 
-        &__suggestions {
+        &__list {
             position: relative;
             z-index: 9;
             display: none;
             width: 40%;
-            padding: 1rem 1rem;
+            padding: 1rem 0;
             border-width: 0 1px 1px 1px;
             border-color: $transparent;
             border-style: solid;
             border-radius: 0 0 0.5rem 0.5rem;
             background-color: $white;
+
+            &.show{
+              display: block;
+            }
+        }
+
+        &__item {
+          cursor: pointer;
+          padding: 0.5rem 1rem;
+          @include transitionEase;
+
+          &:hover {
+            background-color: $light-gray;
+          }
         }
     }
 }
