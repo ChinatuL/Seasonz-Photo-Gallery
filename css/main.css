@@ -306,12 +306,10 @@ header .hero__text-quote {
   position: relative;
   z-index: 9;
   display: none;
-  width: 40%;
-  padding: 1rem 0;
-  border-width: 0 1px 1px 1px;
+  border-width: 0 1px 0 1px;
   border-color: rgba(0, 0, 0, 0.5019607843);
   border-style: solid;
-  border-radius: 0 0 0.5rem 0.5rem;
+  padding: 1rem 0;
   background-color: #ffffff;
 }
 .section__filters .filters__list.show {
@@ -324,6 +322,24 @@ header .hero__text-quote {
 }
 .section__filters .filters__item:hover {
   background-color: #f2f2f2;
+}
+.section__filters .filters__recents {
+  display: flex;
+  padding: 0.5rem 1rem;
+  border-width: 0 1px 1px 1px;
+  border-color: rgba(0, 0, 0, 0.5019607843);
+  border-style: solid;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.section__filters .filters__recents > li {
+  margin-right: 2rem;
+  padding: 0.5rem;
+  border: 1px solid #000000;
+  width: -moz-max-content;
+  width: max-content;
+}
+.section__filters .filters__list, .section__filters .filters__recents {
+  width: 40%;
 }
 
 body {

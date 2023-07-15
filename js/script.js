@@ -275,10 +275,13 @@ const showSlides = () => {
 showSlides(slideIndex);
 
 /*************************************** FILTERS **************************************/
+const form = document.querySelector(".filters__form");
 const inputElem = document.querySelector(".filters__form-input");
 const submitBtn = document.querySelector(".filters__form-btn");
 const filtersList = document.querySelector(".filters__list");
+const recentFiltersContainer = document.querySelector(".filters__recents");
 let suggestions = [];
+let recentFilters = [];
 
 inputElem.addEventListener("keyup", () => {
     const inputValue = inputElem.value;
@@ -301,7 +304,7 @@ inputElem.addEventListener("keyup", () => {
 function displaySuggestions(input) {
     suggestions.map((word) => {
         let filtersListItem = document.createElement("li");
-        filtersListItem.classList.add("filters__item");
+        filtersListItem.setAttribute("class", "filters__item");
 
         let match = "<b>" + word.substring(0, input.trim().length) + "</b>";
         match += word.substring(input.trim().length);
@@ -328,12 +331,35 @@ function selectFilter(input) {
     );
 }
 
-/****************************************** RENDER IMAGES **********************************************/
-const form = document.querySelector(".filters__form");
+function setRecents(filter) {
+    if (recentFilters.length === 5) {
+        recentFilters.shift();
+    }
+    if (recentFilters.includes(filter)) {
+        recentFilters = recentFilters;
+    } else {
+        recentFilters.push(filter);
+        localStorage.setItem("recentFilters", JSON.stringify(recentFilters));
+
+        let storedFilters = JSON.parse(localStorage.getItem("recentFilters"));
+
+        let recentFilterElem = document.createElement("li");
+        recentFilterElem.textContent = storedFilters[storedFilters.length - 1];
+
+        recentFiltersContainer.append(recentFilterElem);
+        if (recentFiltersContainer.children.length === 6) {
+            recentFiltersContainer.firstElementChild.remove();
+        }
+    }
+}
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (inputElem.value.trim()) {
+    if (inputElem.value.trim() && filters.includes(inputElem.value.trim())) {
+        setRecents(inputElem.value.trim());
+        console.log("submitted");
         return true;
     }
 });
+
+/*********************************************** RENDER IMAGES *****************************************/

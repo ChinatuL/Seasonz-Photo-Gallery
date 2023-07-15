@@ -4,8 +4,8 @@
     align-items: center;
 
     .filters {
-      position: absolute;
-      top: 3rem;
+        position: absolute;
+        top: 3rem;
         width: 100%;
         margin-bottom: 2rem;
 
@@ -53,27 +53,47 @@
             position: relative;
             z-index: 9;
             display: none;
-            width: 40%;
-            padding: 1rem 0;
-            border-width: 0 1px 1px 1px;
+            border-width: 0 1px 0 1px;
             border-color: $transparent;
             border-style: solid;
-            border-radius: 0 0 0.5rem 0.5rem;
+            // width: 40%;
+            padding: 1rem 0;
             background-color: $white;
 
-            &.show{
-              display: block;
+            &.show {
+                display: block;
             }
         }
 
         &__item {
-          cursor: pointer;
-          padding: 0.5rem 1rem;
-          @include transitionEase;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            @include transitionEase;
 
-          &:hover {
-            background-color: $light-gray;
-          }
+            &:hover {
+                background-color: $light-gray;
+            }
+        }
+
+        &__recents {
+            display: flex;
+            padding: 0.5rem 1rem;
+            border-width: 0 1px 1px 1px;
+            border-color: $transparent;
+            border-style: solid;
+            border-radius: 0 0 0.5rem 0.5rem;
+
+            & > li {
+              margin-right: 2rem;
+              padding: 0.5rem;
+              border: 1px solid $black;
+              width: max-content;
+            }
+        }
+
+        &__list,
+        &__recents {
+            width: 40%;
         }
     }
 }
