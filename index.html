@@ -107,7 +107,11 @@
                                     placeholder="Filter pictures"
                                     aria-label="Filter pictures"
                                 />
-                                <button type="submit" class="filters__form-btn" disabled>
+                                <button
+                                    type="submit"
+                                    class="filters__form-btn"
+                                    disabled
+                                >
                                     <svg
                                         width="24px"
                                         height="24px"
@@ -124,20 +128,17 @@
                                     </svg>
                                 </button>
                             </div>
-                            <ul class="filters__list">
-                                
-                            </ul>
-                            <ul class="filters__recents">
-                              
-                            </ul>
+                            <ul class="filters__list"></ul>
                         </form>
+                        <div class="filters__recents">
+                            <h3 class="filters__recents-heading">Recents:</h3>
+                            <ul class="filters__recents-list"></ul>
+                        </div>
                     </div>
-                    
                 </section>
             </div>
-            
         </main>
         <footer></footer>
-        <script src="./js/script.js"></script>
+        <script src="./js/script.js" type="module"></script>
     </body>
 </html>

@@ -53,10 +53,11 @@
             position: relative;
             z-index: 9;
             display: none;
-            border-width: 0 1px 0 1px;
+            border-width: 0 1px 1px 1px;
             border-color: $transparent;
             border-style: solid;
-            // width: 40%;
+            border-radius: 0 0 0.5rem 0.5rem;
+            width: 40%;
             padding: 1rem 0;
             background-color: $white;
 
@@ -77,23 +78,37 @@
 
         &__recents {
             display: flex;
-            padding: 0.5rem 1rem;
-            border-width: 0 1px 1px 1px;
-            border-color: $transparent;
-            border-style: solid;
-            border-radius: 0 0 0.5rem 0.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 0.5rem;
 
-            & > li {
-              margin-right: 2rem;
-              padding: 0.5rem;
-              border: 1px solid $black;
-              width: max-content;
+            &-heading {
+                display: none;
+                font-weight: 400;
+
+                &.show {
+                    display: block;
+                }
             }
-        }
 
-        &__list,
-        &__recents {
-            width: 40%;
+            &-list {
+                padding: 0.5rem 0;
+
+                &.show {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+
+                & > li {
+                    margin-right: 2rem;
+                    padding: 0.5rem;
+                    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
+                    width: max-content;
+                }
+            }
         }
     }
 }

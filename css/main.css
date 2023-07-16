@@ -143,6 +143,9 @@ header .hero__text-quote {
   header .nav.white-nav .nav__toggler-harmburger {
     background-color: #000000;
   }
+  header .nav.white-nav .nav__toggler-harmburger.open {
+    background-color: transparent;
+  }
   header .nav.white-nav .nav__toggler-harmburger::before, header .nav.white-nav .nav__toggler-harmburger::after {
     background-color: #000000;
   }
@@ -223,6 +226,9 @@ header .hero__text-quote {
   }
   header .nav__link::after {
     background-color: #000000;
+  }
+  header .section__filters .filters__recents-list > li {
+    margin-right: 1rem;
   }
 }
 .nav__item:nth-child(1) {
@@ -306,9 +312,11 @@ header .hero__text-quote {
   position: relative;
   z-index: 9;
   display: none;
-  border-width: 0 1px 0 1px;
+  border-width: 0 1px 1px 1px;
   border-color: rgba(0, 0, 0, 0.5019607843);
   border-style: solid;
+  border-radius: 0 0 0.5rem 0.5rem;
+  width: 40%;
   padding: 1rem 0;
   background-color: #ffffff;
 }
@@ -325,21 +333,33 @@ header .hero__text-quote {
 }
 .section__filters .filters__recents {
   display: flex;
-  padding: 0.5rem 1rem;
-  border-width: 0 1px 1px 1px;
-  border-color: rgba(0, 0, 0, 0.5019607843);
-  border-style: solid;
-  border-radius: 0 0 0.5rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.5rem;
 }
-.section__filters .filters__recents > li {
+.section__filters .filters__recents-heading {
+  display: none;
+  font-weight: 400;
+}
+.section__filters .filters__recents-heading.show {
+  display: block;
+}
+.section__filters .filters__recents-list {
+  padding: 0.5rem 0;
+}
+.section__filters .filters__recents-list.show {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.section__filters .filters__recents-list > li {
   margin-right: 2rem;
   padding: 0.5rem;
-  border: 1px solid #000000;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1);
   width: -moz-max-content;
   width: max-content;
-}
-.section__filters .filters__list, .section__filters .filters__recents {
-  width: 40%;
 }
 
 body {

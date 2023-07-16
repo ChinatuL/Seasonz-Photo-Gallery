@@ -10,6 +10,10 @@
               .nav__toggler-harmburger {
                 background-color: $black;
 
+                &.open {
+                  background-color: transparent;
+                }
+
                 &::before, &::after {
                   background-color: $black;
                 }
@@ -112,6 +116,18 @@
                     background-color: $black;
                 }
             }
+        }
+
+        .section__filters {
+
+          .filters__recents {
+
+            &-list {
+              & > li {
+                margin-right: 1rem;
+              }
+            }
+          }
         }
     }
 }
