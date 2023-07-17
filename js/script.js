@@ -147,4 +147,4 @@ function setRecents(filter) {
     }
 }
 
-console.log(recentFiltersElem.previousElementSibling);
+// GALLERY
