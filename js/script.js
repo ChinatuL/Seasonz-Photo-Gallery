@@ -54,7 +54,7 @@ const inputElem = document.querySelector(".filters__form-input");
 const filtersElem = document.querySelector(".filters__list");
 const recentFiltersElem = document.querySelector(".filters__recents-list");
 let suggestions = [];
-let recentFilters = [];
+let recentFilters = new Set();
 
 inputElem.addEventListener("keyup", () => {
     const inputValue = inputElem.value;
@@ -119,32 +119,26 @@ function selectFilter(input) {
 }
 
 function setRecents(filter) {
-    if (recentFilters.length === 5) {
-        recentFilters.shift();
+    if (recentFilters.size === 5) {
+        recentFilters.delete([...recentFilters][0]);
     }
-    if (recentFilters.includes(filter)) {
-        recentFilters = recentFilters;
-    } else {
-        // save to local storage
-        recentFilters.push(filter);
-        localStorage.setItem("recentFilters", JSON.stringify(recentFilters));
+    recentFilters.add(filter);
 
-        // get saved filters from local storage
-        let savedFilters = JSON.parse(localStorage.getItem("recentFilters"));
+    localStorage.setItem("recentFilters", JSON.stringify([...recentFilters]));
+    let savedFilters = JSON.parse(localStorage.getItem("recentFilters"));
 
-        let recentFilter = document.createElement("li");
-        recentFilter.textContent = savedFilters[savedFilters.length - 1];
-        recentFiltersElem.append(recentFilter);
+    let recentFilter = document.createElement("li");
+    recentFilter.textContent = savedFilters.slice(-1)[0];
+    recentFiltersElem.append(recentFilter);
 
-        if (recentFiltersElem.children.length > 0) {
-            recentFiltersElem.previousElementSibling.classList.add("show");
-            recentFiltersElem.classList.add("show");
-        }
-
-        if (recentFiltersElem.children.length === 6) {
-            recentFiltersElem.firstElementChild.remove();
-        }
+    if (recentFiltersElem.children.length) {
+        recentFiltersElem.previousElementSibling.classList.add("show");
+        recentFiltersElem.classList.add("show");
+    }
+    if (recentFilter.isEqualNode(recentFilter.previousElementSibling)) {
+        recentFilter.remove();
+    }
+    if (recentFiltersElem.children.length === 6) {
+        recentFiltersElem.firstElementChild.remove();
     }
 }
-
-// GALLERY
