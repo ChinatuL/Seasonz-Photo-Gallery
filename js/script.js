@@ -62,7 +62,6 @@ inputElem.addEventListener("keyup", () => {
 
     clearSuggestions();
     filtersElem.classList.remove("show");
-
     if (inputValue.trim()) {
         submitBtn.removeAttribute("disabled");
         suggestions = filters.filter((suggestion) => {
@@ -89,13 +88,11 @@ function displaySuggestions(input) {
     suggestions.map((word) => {
         let listItem = document.createElement("li");
         listItem.setAttribute("class", "filters__item");
-
         let match =
             "<b>" +
             word.substring(0, input.trim().length) +
             "</b>" +
             word.substring(input.trim().length);
-
         listItem.innerHTML = match;
         filtersElem.append(listItem);
         filtersElem.classList.add("show");
@@ -123,15 +120,12 @@ function setRecents(filter) {
         recentFilters.delete([...recentFilters][0]);
     }
     recentFilters.add(filter);
-
     localStorage.setItem("recentFilters", JSON.stringify([...recentFilters]));
     let savedFilters = JSON.parse(localStorage.getItem("recentFilters"));
-
     let recentFilter = document.createElement("li");
     recentFilter.textContent = savedFilters.slice(-1)[0];
     recentFiltersElem.append(recentFilter);
-
-    if (recentFiltersElem.children.length) {
+    if (recentFiltersElem.children) {
         recentFiltersElem.previousElementSibling.classList.add("show");
         recentFiltersElem.classList.add("show");
     }
@@ -142,3 +136,26 @@ function setRecents(filter) {
         recentFiltersElem.firstElementChild.remove();
     }
 }
+
+// GALLERY
+const galleryContainer = document.querySelector(".gallery");
+const galleryHeading = document.querySelector(".gallery__subheading");
+const galleryClone = gallery.slice();
+
+function shuffleGallery(gallery) {
+    for (let i = gallery.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [gallery[i], gallery[j]] = [gallery[j], gallery[i]];
+    }
+}
+
+function renderImage() {
+    shuffleGallery(galleryClone);
+    galleryClone.forEach((image) => {
+        const imageContainer = document.createElement("div");
+        imageContainer.setAttribute("class", "gallery__image");
+        imageContainer.innerHTML = `<img src="${image.src}" alt="${image.alt}"/>`;
+        galleryContainer.append(imageContainer);
+    });
+}
+renderImage();

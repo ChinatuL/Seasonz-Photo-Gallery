@@ -2,6 +2,7 @@
 @import "header";
 @import "responsive";
 @import "filters";
+@import "gallery";
 
 body {
     width: 100%;
@@ -9,27 +10,27 @@ body {
 }
 
 .container {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 main {
-  position: relative;
-  top: 100vh;
-  @include flex(column)
+    position: relative;
+    top: 100vh;
+    @include flex(column);
 }
 
 .section {
-  margin-top: 2rem;
+    margin: 2rem 0;
 }
 
 .subheading {
-  font-weight: 400;
+    font-weight: 400;
 }

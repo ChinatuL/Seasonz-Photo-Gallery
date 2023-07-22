@@ -21,210 +21,248 @@ const filters = [
     "wet leaves",
 ];
 
-const gallery = {
-    img1: {
-        src: "https://thumbs2.imgbox.com/42/c7/pkaelCSi_t.jpg",
+const gallery = [
+    {
+        src: "https://i.postimg.cc/ZRyzkYN1/pexels-eberhard-grossgasteiger-2310641.jpg",
+        alt: "A field with trees and brown leaves",
         category: "autumn",
         filters: ["trees"],
     },
-    img2: {
-        src: "https://thumbs2.imgbox.com/03/12/Lf5Nth86_t.jpg",
+    {
+        src: "https://i.postimg.cc/k5sBVchn/pexels-irina-iriser-1590549.jpg",
+        alt: "Brown leaves hanging from a tree",
         category: "autumn",
         filters: ["leaves", "sun"],
     },
-    img3: {
-        src: "https://thumbs2.imgbox.com/d8/4d/cIoNqnBJ_t.jpg",
+    {
+        src: "https://i.postimg.cc/DwHKxbJq/pexels-jara-3083250.jpg",
+        alt: "Wet fallen leaves",
         category: "autumn",
         filters: ["leaves", "dew", "water", "wet leaves"],
     },
-    img4: {
-        src: "https://thumbs2.imgbox.com/b2/f2/J4Lnnwxs_t.jpg",
+    {
+        src: "https://i.postimg.cc/J0L4ssCW/pexels-josh-hild-14269090.jpg",
+        alt: "A dog in a bush with dry grasses",
         category: "autumn",
         filters: ["animal", "grass"],
     },
-    img5: {
-        src: "https://thumbs2.imgbox.com/b5/18/MQxwJ979_t.jpg",
+    {
+        src: "https://i.postimg.cc/Jn7pMqGw/pexels-lil-artsy-3127729.jpg",
+        alt: "A cat standing beside the road with fallen maple leaves",
         category: "autumn",
         filters: ["animal", "leaves", "dry leaves"],
     },
-    img6: {
-        src: "https://thumbs2.imgbox.com/45/d5/O6Ak8lLo_t.jpg",
+    {
+        src: "https://i.postimg.cc/K8JNQT0J/pexels-lisa-fotios-2812164.jpg",
+        alt: "A forest with tall trees and dead leaves",
         category: "autumn",
         filters: ["forest", "trees"],
     },
-    img7: {
-        src: "https://thumbs2.imgbox.com/98/6b/kW1hagTn_t.jpg",
+    {
+        src: "https://i.postimg.cc/4yQtyCMB/pexels-luke-barky-2899722.jpg",
+        alt: "A field with grass, fenced with a rope tied to poles",
         category: "autumn",
         filters: ["sunset", "grass"],
     },
-    img8: {
-        src: "https://thumbs2.imgbox.com/48/e8/HVTjEAQ7_t.jpg",
+    {
+        src: "https://i.postimg.cc/Vs2LrH1F/pexels-maro-markovi-1468735.jpg",
+        alt: "A narrow stream, flowing from rocks with fallen leaves around it",
         category: "autumn",
         filters: ["stream", "rocks", "wet leaves"],
     },
-    img9: {
-        src: "https://thumbs2.imgbox.com/54/04/VgR086Qg_t.jpg",
+    {
+        src: "https://i.postimg.cc/9MG1dnKq/pexels-petar-star-evi-2389122.jpg",
+        alt: "A field with dried grass and rolled up barn",
         category: "autumn",
         filters: ["field", "grass"],
     },
-    img10: {
-        src: "https://thumbs2.imgbox.com/88/c1/lNiJfVzy_t.jpg",
+    {
+        src: "https://i.postimg.cc/tJv6Wdqx/pexels-ylanite-koppens-612816.jpg",
+        alt: "Dried acorns and leaves",
         category: "autumn",
         filters: ["leaves"],
     },
-    img11: {
-        src: "https://thumbs2.imgbox.com/2d/fb/jBZgzuX5_t.jpg",
+    {
+        src: "https://i.postimg.cc/9fPqJHXV/pexels-afr-creation-15994490.jpg",
+        alt: "Wet leaf with water drops",
         category: "spring",
         filters: ["water", "leaves", "wet leaves"],
     },
-    img12: {
-        src: "https://thumbs2.imgbox.com/24/83/9qapZXQ9_t.jpg",
+    {
+        src: "https://i.postimg.cc/y6p3fPKJ/pexels-andreas-15985749.jpg",
+        alt: "A field with trees and green grass",
         category: "spring",
         filters: ["trees", "grass", "field"],
     },
-    img13: {
-        src: "https://thumbs2.imgbox.com/a2/3a/WSkUck3X_t.jpg",
+    {
+        src: "https://i.postimg.cc/8Cnsyk82/pexels-david-brown-16001827.jpg",
+        alt: "Bread resting on a tree branch while it drizzles",
         category: "spring",
         filters: ["water", "animal"],
     },
-    img14: {
-        src: "https://thumbs2.imgbox.com/bf/8c/F13sxOP1_t.jpg",
+    {
+        src: "https://i.postimg.cc/7YQcYpkx/pexels-denniz-futalan-5049271.jpg",
+        alt: "A rabbit in a bush with green grasses",
         category: "spring",
         filters: ["animal", "grass", "leaves"],
     },
-    img15: {
-        src: "https://thumbs2.imgbox.com/ed/63/8VDl40VI_t.jpg",
+    {
+        src: "https://i.postimg.cc/286ktRGm/pexels-dids-4261738.jpg",
+        alt: "A wet leaf",
         category: "spring",
         filters: ["water", "leaves", "wet leaves"],
     },
-    img16: {
-        src: "https://thumbs2.imgbox.com/aa/5e/mwSUiWvk_t.jpg",
+    {
+        src: "https://i.postimg.cc/Xvgt3XNP/pexels-jonathan-petersson-1076183.jpg",
+        alt: "Sunset in a forest with tall trees and green grass",
         category: "spring",
         filters: ["trees", "grass"],
     },
-    img17: {
-        src: "https://thumbs2.imgbox.com/bd/c4/Fg7DyfeC_t.jpg",
+    {
+        src: "https://i.postimg.cc/SQzFYSgn/pexels-maria-orlova-4906295.jpg",
+        alt: "Blossoming flowers on a tree against clear blue sky",
         category: "spring",
         filters: ["leaves", "flowers"],
     },
-    img18: {
-        src: "https://thumbs2.imgbox.com/bf/ce/KlsXgaEU_t.jpg",
+    {
+        src: "https://i.postimg.cc/3xZdMCpQ/pexels-pixabay-40731.jpg",
+        alt: "Lady bug on a blade of grass wet with dew",
         category: "spring",
         filters: ["grass", "water", "wet leaves", "animal"],
     },
-    img19: {
-        src: "https://thumbs2.imgbox.com/c5/d2/zZ23cky6_t.jpg",
+    {
+        src: "https://i.postimg.cc/zvDxjknD/pexels-pixabay-86431.jpg",
+        alt: "A field with grass and blossoming red flowers",
         category: "spring",
         filters: ["flowers", "field", "grass", "clouds"],
     },
-    img20: {
-        src: "https://thumbs2.imgbox.com/8f/1d/WBwzYVSo_t.jpg",
+    {
+        src: "https://i.postimg.cc/2SjBSKCS/pexels-q-h-ng-ph-m-15962267.jpg",
+        alt: "Flowers on tree branches",
         category: "spring",
         filters: ["trees", "flowers"],
     },
-    img21: {
-        src: "https://thumbs2.imgbox.com/f3/f8/rRLdW4v8_t.jpg",
+    {
+        src: "https://i.postimg.cc/cL6wcb25/pexels-asad-photo-maldives-3601421.jpg",
+        alt: "Beach houses on the sea",
         category: "summer",
         filters: ["sunset", "water", "sea"],
     },
-    img22: {
-        src: "https://thumbs2.imgbox.com/0b/97/uNXYiQ84_t.jpg",
+    {
+        src: "https://i.postimg.cc/tCcY9Cv2/pexels-dom-gould-325807.jpg",
+        alt: "Stream in the middle of rocks and trees",
         category: "summer",
         filters: ["trees", "rocks", "water"],
     },
-    img23: {
-        src: "https://thumbs2.imgbox.com/47/3e/Wi7BeJa4_t.jpg",
+    {
+        src: "https://i.postimg.cc/GpxLTcz0/pexels-james-wheeler-1486974.jpg",
+        alt: "Sunset with clear clouds reflecting on a lake",
         category: "summer",
         filters: ["trees", "grass", "water", "clouds"],
     },
-    img24: {
-        src: "https://thumbs2.imgbox.com/b2/65/WdPnK2Mp_t.jpg",
+    {
+        src: "https://i.postimg.cc/Wbqs6mSw/pexels-partha-chatterjee-16070595.jpg",
+        alt: "Sunflowers",
         category: "summer",
         filters: ["flowers"],
     },
-    img25: {
-        src: "https://thumbs2.imgbox.com/55/08/sw6CAU1Y_t.jpg",
+    {
+        src: "https://i.postimg.cc/Kcw2zkFk/pexels-pixabay-262713.jpg",
+        alt: "Sun shining on a field of flowers",
         category: "summer",
         filters: ["flowers", "field"],
     },
-    img26: {
-        src: "https://thumbs2.imgbox.com/71/84/oBU0TLVr_t.jpg",
+    {
+        src: "https://i.postimg.cc/pL2RbNRq/pexels-pixabay-302549.jpg",
+        alt: "Trees growing on a rock in the sea",
         category: "summer",
-        filters: ["rocks", "trees", "water", "ocean"],
+        filters: ["rocks", "trees", "water"],
     },
-    img27: {
-        src: "https://thumbs2.imgbox.com/18/e9/ZID1NOjO_t.jpg",
+    {
+        src: "https://i.postimg.cc/gjVFQs7C/pexels-pixabay-358457.jpg",
+        alt: "A waterfall above a bridge",
         category: "summer",
         filters: ["waterfalls", "rocks", "trees"],
     },
-    img28: {
-        src: "https://thumbs2.imgbox.com/ef/27/qL69wJTN_t.jpg",
+
+    {
+        src: "https://i.postimg.cc/rF929hxW/pexels-roberto-nickson-2631613.jpg",
+        alt: "A beach with palm trees and shelters",
         category: "summer",
         filters: ["field", "grass", "trees", "rocks"],
     },
-    img29: {
-        src: "https://thumbs2.imgbox.com/0f/0b/0kxlT2Ps_t.jpg",
+    {
+        src: "https://i.postimg.cc/RhQyXF69/pexels-robert-so-15968083.jpg",
+        alt: "A clear sky above a field with a tree and green grass",
         category: "summer",
         filters: ["beach", "trees", "ocean", "water"],
     },
-    img30: {
-        src: "https://thumbs2.imgbox.com/66/eb/Xr0ODXJ3_t.jpg",
+    {
+        src: "https://i.postimg.cc/W4k953CK/pexels-ryan-delfin-2270389.jpg",
+        alt: "Tall palm trees",
         category: "summer",
         filters: ["clouds", "trees"],
     },
-    img31: {
-        src: "https://thumbs2.imgbox.com/d5/24/aU2zqvcc_t.jpg",
+    {
+        src: "https://i.postimg.cc/dQphYVxn/pexels-alissa-nabiullina-997567.jpg",
+        alt: "Flower seeds on a tree covered with snow",
         category: "winter",
         filters: ["snow", "flowers"],
     },
-    img32: {
-        src: "https://thumbs2.imgbox.com/43/02/iiA3DBHH_t.jpg",
+    {
+        src: "https://i.postimg.cc/PqSbHv9N/pexels-annika-thierfeld-735986.jpg",
+        alt: "A deer in the snow",
         category: "winter",
         filters: ["snow", "animal", "trees"],
     },
-    img33: {
-        src: "https://thumbs2.imgbox.com/ce/7b/KACwfss9_t.jpg",
+    {
+        src: "https://i.postimg.cc/65zpYVv7/pexels-eberhard-grossgasteiger-1366919.jpg",
+        alt: "A mountain partially covered with snow",
         category: "winter",
         filters: ["snow", "rocks"],
     },
-    img34: {
-        src: "https://thumbs2.imgbox.com/b0/46/tY2S6pnx_t.jpg",
+    {
+        src: "https://i.postimg.cc/nr2pSZC8/pexels-eberhard-grossgasteiger-1417651.jpg",
+        alt: "Mountain under a night sky with snow falling",
         category: "winter",
         filters: ["field", "rocks", "snow"],
     },
-    img35: {
-        src: "https://thumbs2.imgbox.com/7b/68/5M3aSssl_t.jpg",
+    {
+        src: "https://i.postimg.cc/0jBHyH4M/pexels-egor-kamelev-813872.jpg",
+        alt: "A snowflake on grass",
         category: "winter",
         filters: ["ice", "flowers", "grass"],
     },
-    img36: {
-        src: "https://thumbs2.imgbox.com/ca/af/bkbQyFBK_t.jpg",
+    {
+        src: "https://i.postimg.cc/1t6j3HQJ/pexels-julia-volk-5111048.jpg",
+        alt: "An iceberg",
         category: "winter",
-        filters: ["ice", "snow", "water", "rocks"],
+        filters: ["ice", "snow", "water"],
     },
-    img37: {
-        src: "https://thumbs2.imgbox.com/d8/67/AThk6k8q_t.jpg",
+    {
+        src: "https://i.postimg.cc/sXpH1zLG/pexels-nikolai-ulltang-325139.jpg",
+        alt: "A river surrounded by trees with snow on them",
         category: "winter",
         filters: ["trees", "water"],
     },
-    img38: {
-        src: "https://thumbs2.imgbox.com/99/86/kb4j2n3w_t.jpg",
+    {
+        src: "https://i.postimg.cc/k5w5hxZY/pexels-pixabay-86405.jpg",
+        alt: "A penguin in the snow",
         category: "winter",
         filters: ["ice", "snow", "animal"],
     },
-    img39: {
-        src: "https://thumbs2.imgbox.com/2c/ef/jTGJL6Qz_t.jpg",
+    {
+        src: "https://i.postimg.cc/fyF43bPv/pexels-rok-romih-3894112.jpg",
+        alt: "A bird flying while it snows",
         category: "winter",
         filters: ["animal", "snow"],
     },
-    img40: {
-        src: "https://thumbs2.imgbox.com/3e/db/yN3PTTC7_t.jpg",
+    {
+        src: "https://i.postimg.cc/yYtgKXLD/pexels-simon-berger-3732527.jpg",
+        alt: "A tree with frozen branches",
         category: "winter",
         filters: ["trees", "snow"],
     },
-};
+];
 
-export {
-  filters,
-  gallery
-}
+export { filters, gallery };
