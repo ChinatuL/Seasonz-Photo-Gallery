@@ -9,21 +9,21 @@ header {
         width: 100%;
 
         &.white-nav {
-          background-color: $white;
+            background-color: $white;
 
-          .nav__logo {
-            &-text {
-              color: $black;
+            .nav__logo {
+                &-text {
+                    color: $black;
+                }
             }
-          }
 
-          .nav__link {
-            color: $black;
+            .nav__link {
+                color: $black;
 
-            &::after {
-              background-color: $black;
+                &::after {
+                    background-color: $black;
+                }
             }
-          }
         }
 
         &__logo {
@@ -51,6 +51,10 @@ header {
             color: $white;
             position: relative;
 
+            &.active::after {
+                width: 100%;
+            }
+
             &::after {
                 content: "";
                 position: absolute;
@@ -62,9 +66,7 @@ header {
                 @include transitionEase;
             }
 
-            &:hover::after,
-            &:active::after,
-            &:focus::after {
+            &:hover::after {
                 width: 100%;
             }
 
@@ -79,7 +81,7 @@ header {
     }
 
     .hero {
-      height: max-content;
+        height: max-content;
 
         &__images {
             position: absolute;

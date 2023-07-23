@@ -1,7 +1,22 @@
 import { filters, gallery } from "./store.js";
 
-// HEADER
-const toggleMenu = () => {
+/******************************************* NAVBAR ********************************************/
+const navBtn = document.getElementById("navbar__btn");
+const navLinks = document.querySelectorAll(".nav__link");
+const navbar = document.querySelector(".nav");
+const navbarHeight = navbar.getBoundingClientRect().height;
+
+navBtn.addEventListener("click", toggleMenu);
+navLinks.forEach((link) => link.addEventListener("click", handleActiveNav));
+window.addEventListener("scroll", (e) => {
+    if (e.currentTarget.scrollY > navbarHeight) {
+        navbar.classList.add("white-nav");
+    } else {
+        navbar.classList.remove("white-nav");
+    }
+});
+
+function toggleMenu() {
     const navHarmburger = document.getElementById("nav__harmburger");
     const navList = document.getElementById("nav__list");
     const navItem = document.querySelectorAll(".nav__item");
@@ -18,21 +33,16 @@ const toggleMenu = () => {
             item.classList.remove("open");
         });
     }
-};
-const navBtn = document.getElementById("navbar__btn");
-navBtn.addEventListener("click", toggleMenu);
+}
 
-const navbar = document.querySelector(".nav");
-const navbarHeight = navbar.getBoundingClientRect().height;
-window.addEventListener("scroll", (e) => {
-    if (e.currentTarget.scrollY > navbarHeight) {
-        navbar.classList.add("white-nav");
-    } else {
-        navbar.classList.remove("white-nav");
-    }
-});
+function handleActiveNav(e) {
+    navLinks.forEach((link) => link.classList.remove("active"));
+    e.target.classList.add("active");
+}
 
-// HERO SECTION
+/******************************************* NAVBAR ********************************************/
+
+/******************************************* HERO SECTION ********************************************/
 let slideIndex = 1;
 const showSlides = () => {
     const slideImages = document.querySelectorAll(".hero__images-img");
@@ -46,10 +56,57 @@ const showSlides = () => {
     slideImages[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 5000);
 };
-
 showSlides(slideIndex);
+/******************************************* HERO SECTION ********************************************/
 
-// FILTERS
+/******************************************* RENDER IMAGES ********************************************/
+
+const galleryContainer = document.querySelector(".gallery");
+const galleryHeading = document.querySelector(".gallery__subheading");
+const galleryClone = gallery.slice();
+
+let visibleImages = 0;
+
+const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+};
+
+const observer = new IntersectionObserver(renderImage, options);
+observer.observe(galleryContainer);
+
+function shuffleGallery(gallery) {
+    for (let i = gallery.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [gallery[i], gallery[j]] = [gallery[j], gallery[i]];
+    }
+}
+
+function renderImage(enteries, observer) {
+    shuffleGallery(galleryClone);
+    enteries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const imagesToLoad = 6;
+
+            for (let i = visibleImages; i < visibleImages + imagesToLoad; i++) {
+                if (i >= galleryClone.length) {
+                    observer.disconnect();
+                    return;
+                }
+                const imageContainer = document.createElement("div");
+                imageContainer.setAttribute("class", "gallery__image");
+                imageContainer.innerHTML = `<img src="${galleryClone[i].src}" alt="${galleryClone[i].alt}"/>`;
+                galleryContainer.append(imageContainer);
+            }
+            visibleImages += imagesToLoad;
+        }
+    });
+}
+
+/******************************************* RENDER IMAGES ********************************************/
+
+/******************************************* FILTERS ********************************************/
 const inputElem = document.querySelector(".filters__form-input");
 const filtersElem = document.querySelector(".filters__list");
 const recentFiltersElem = document.querySelector(".filters__recents-list");
@@ -136,26 +193,4 @@ function setRecents(filter) {
         recentFiltersElem.firstElementChild.remove();
     }
 }
-
-// GALLERY
-const galleryContainer = document.querySelector(".gallery");
-const galleryHeading = document.querySelector(".gallery__subheading");
-const galleryClone = gallery.slice();
-
-function shuffleGallery(gallery) {
-    for (let i = gallery.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [gallery[i], gallery[j]] = [gallery[j], gallery[i]];
-    }
-}
-
-function renderImage() {
-    shuffleGallery(galleryClone);
-    galleryClone.forEach((image) => {
-        const imageContainer = document.createElement("div");
-        imageContainer.setAttribute("class", "gallery__image");
-        imageContainer.innerHTML = `<img src="${image.src}" alt="${image.alt}"/>`;
-        galleryContainer.append(imageContainer);
-    });
-}
-renderImage();
+/******************************************* FILTERS ********************************************/

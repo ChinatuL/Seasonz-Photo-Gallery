@@ -53,6 +53,9 @@ header .nav__link {
   color: #ffffff;
   position: relative;
 }
+header .nav__link.active::after {
+  width: 100%;
+}
 header .nav__link::after {
   content: "";
   position: absolute;
@@ -63,7 +66,7 @@ header .nav__link::after {
   background-color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
-header .nav__link:hover::after, header .nav__link:active::after, header .nav__link:focus::after {
+header .nav__link:hover::after {
   width: 100%;
 }
 header .nav__link-tab {
