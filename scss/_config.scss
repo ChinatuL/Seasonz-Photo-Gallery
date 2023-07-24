@@ -11,6 +11,10 @@ $input-border: #00000033;
     font-weight: 400;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 *::before,
 *::after {
