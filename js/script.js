@@ -1,5 +1,24 @@
 import { filters, gallery } from "./store.js";
 
+function addClass(el, clas) {
+    el.classList.add(clas);
+}
+
+function removeClass(el, clas) {
+    el.classList.remove(clas);
+}
+
+function makeElement(type, properties, children) {
+    const el = document.createElement(type);
+    if (properties) {
+        Object.assign(el, properties);
+    }
+    if (children) {
+        el.append(...children);
+    }
+    return el;
+}
+
 /******************************************* NAVBAR ********************************************/
 const navBtn = document.getElementById("navbar__btn");
 const navLinks = document.querySelectorAll(".nav__link");
@@ -12,22 +31,22 @@ function toggleMenu() {
 
     navList.classList.toggle("open");
     if (navList.classList.contains("open")) {
-        navHarmburger.classList.add("open");
+        addClass(navHarmburger, "open");
         navItem.forEach((item) => {
-            item.classList.add("open");
+            addClass(item, "open");
         });
     } else {
-        navHarmburger.classList.remove("open");
+        removeClass(navHarmburger, "open");
         navItem.forEach((item) => {
-            item.classList.remove("open");
+            removeClass(item, "open");
         });
     }
 }
 navBtn.addEventListener("click", toggleMenu);
 
 function handleActiveNav(e) {
-    navLinks.forEach((link) => link.classList.remove("active"));
-    e.classList.add("active");
+    navLinks.forEach((link) => removeClass(link, "active"));
+    addClass(e, "active");
 }
 
 navLinks.forEach((link) => {
@@ -41,7 +60,7 @@ navLinks.forEach((link) => {
 });
 
 navLogo.addEventListener("click", () => {
-    navLinks.forEach((link) => link.classList.remove("active"));
+    navLinks.forEach((link) => removeClass(link, "active"));
 });
 
 window.addEventListener("scroll", (e) => {
@@ -49,9 +68,9 @@ window.addEventListener("scroll", (e) => {
     const navbarHeight = navbar.getBoundingClientRect().height;
 
     if (e.currentTarget.scrollY > navbarHeight) {
-        navbar.classList.add("white-nav");
+        addClass(navbar, "white-nav");
     } else {
-        navbar.classList.remove("white-nav");
+        removeClass(navbar, "white-nav");
     }
 });
 /******************************************* NAVBAR ********************************************/
@@ -85,7 +104,7 @@ inputElem.addEventListener("keyup", () => {
     const submitBtn = document.querySelector(".filters__form-btn");
 
     clearSuggestions();
-    filtersElem.classList.remove("show");
+    removeClass(filtersElem, "show");
     if (inputValue.trim()) {
         submitBtn.removeAttribute("disabled");
         suggestions = filters.filter((suggestion) => {
@@ -102,8 +121,7 @@ inputElem.addEventListener("keyup", () => {
 
 function displaySuggestions(input) {
     suggestions.map((word) => {
-        let listItem = document.createElement("li");
-        listItem.setAttribute("class", "filters__item");
+        let listItem = makeElement("li", { className: "filters__item" }, []);
 
         let match =
             "<b>" +
@@ -113,7 +131,7 @@ function displaySuggestions(input) {
         listItem.innerHTML = match;
 
         filtersElem.append(listItem);
-        filtersElem.classList.add("show");
+        addClass(filtersElem, "show");
     });
 }
 
@@ -128,7 +146,7 @@ function selectFilter(input) {
         suggestion.addEventListener("click", (e) => {
             input.value = e.target.innerText;
             clearSuggestions();
-            filtersElem.classList.remove("show");
+            removeClass(filtersElem, "show");
         })
     );
 }
@@ -142,13 +160,13 @@ function setRecents(filter) {
     localStorage.setItem("recentFilters", JSON.stringify([...recentFilters]));
 
     let savedFilters = JSON.parse(localStorage.getItem("recentFilters"));
-    let recentFilter = document.createElement("li");
+    let recentFilter = makeElement("li", null, null);
     recentFilter.textContent = savedFilters.slice(-1)[0];
     recentFiltersElem.append(recentFilter);
 
     if (recentFiltersElem.children) {
-        recentFiltersElem.previousElementSibling.classList.add("show");
-        recentFiltersElem.classList.add("show");
+        addClass(recentFiltersElem.previousElementSibling, "show");
+        addClass(recentFiltersElem, "show");
     }
 
     if (recentFilter.isEqualNode(recentFilter.previousElementSibling)) {
@@ -188,9 +206,13 @@ shuffleGallery(gallery);
 
 function displayImages(images) {
     images.forEach((image) => {
-        const imageContainer = document.createElement("div");
-        imageContainer.setAttribute("class", "gallery__image");
-        imageContainer.innerHTML = `<img src="${image.src}" alt="${image.alt}"/>`;
+        const imageContainer = makeElement(
+            "div",
+            { className: "gallery__image" },
+            [makeElement("img", null, [])]
+        );
+        imageContainer.firstElementChild.setAttribute("src", `${image.src}`);
+        imageContainer.firstElementChild.setAttribute("alt", `${image.alt}`);
         galleryContainer.append(imageContainer);
     });
 }
@@ -217,9 +239,13 @@ function loadMoreImages(images, index) {
             window.removeEventListener("scroll", imageScroll);
             return;
         }
-        const imageContainer = document.createElement("div");
-        imageContainer.setAttribute("class", "gallery__image");
-        imageContainer.innerHTML = `<img src="${images[i].src}" alt="${images[i].alt}"/>`;
+        const imageContainer = makeElement(
+            "div",
+            { className: "gallery__image" },
+            [makeElement("img", null, [])]
+        );
+        imageContainer.firstElementChild.setAttribute("src", `${images[i].src}`);
+        imageContainer.firstElementChild.setAttribute("alt", `${images[i].alt}`);
 
         galleryContainer.append(imageContainer);
     }
