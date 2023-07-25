@@ -23,12 +23,11 @@ function makeElement(type, properties, children) {
 const navBtn = document.getElementById("navbar__btn");
 const navLinks = document.querySelectorAll(".nav__link");
 const navLogo = document.getElementById("home");
+const navList = document.getElementById("nav__list");
+const navHarmburger = document.getElementById("nav__harmburger");
+const navItem = document.querySelectorAll(".nav__item");
 
 function toggleMenu() {
-    const navHarmburger = document.getElementById("nav__harmburger");
-    const navList = document.getElementById("nav__list");
-    const navItem = document.querySelectorAll(".nav__item");
-
     navList.classList.toggle("open");
     if (navList.classList.contains("open")) {
         addClass(navHarmburger, "open");
@@ -55,6 +54,11 @@ navLinks.forEach((link) => {
 
         if (link.classList.contains("active")) {
             displayImagesByCategory(link.innerText.toLowerCase());
+            removeClass(navList, "open");
+            removeClass(navHarmburger, "open");
+            navItem.forEach((item) => {
+                removeClass(item, "open");
+            });
         }
     });
 });
@@ -76,6 +80,7 @@ window.addEventListener("scroll", (e) => {
 /******************************************* NAVBAR ********************************************/
 
 /******************************************* HERO SECTION ********************************************/
+const heroContainer = document.querySelector("hero__Images");
 let slideIndex = 1;
 const showSlides = () => {
     const slideImages = document.querySelectorAll(".hero__images-img");
@@ -244,8 +249,14 @@ function loadMoreImages(images, index) {
             { className: "gallery__image" },
             [makeElement("img", null, [])]
         );
-        imageContainer.firstElementChild.setAttribute("src", `${images[i].src}`);
-        imageContainer.firstElementChild.setAttribute("alt", `${images[i].alt}`);
+        imageContainer.firstElementChild.setAttribute(
+            "src",
+            `${images[i].src}`
+        );
+        imageContainer.firstElementChild.setAttribute(
+            "alt",
+            `${images[i].alt}`
+        );
 
         galleryContainer.append(imageContainer);
     }
@@ -270,8 +281,9 @@ function loadImagesByArray(images) {
     imagesArr = images;
     displayImages(images.slice(0, 3));
     window.addEventListener("scroll", imageScroll);
-    window.scroll({
-        top: galleryContainer.getBoundingClientRect().top + 500,
+    galleryContainer.scroll({
+        top: 0,
+        behavior: "smooth",
     });
 }
 window.addEventListener("load", () => loadImagesByArray(gallery));

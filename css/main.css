@@ -234,8 +234,11 @@ header .hero__text-quote {
   header .nav__link::after {
     background-color: #000000;
   }
-  header .section__filters .filters__recents-list > li {
+  main .section__filters .filters__recents-list > li {
     margin-right: 1rem;
+  }
+  main .section__gallery .gallery {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .nav__item:nth-child(1) {
@@ -263,6 +266,12 @@ header .hero__text-quote {
   }
   header .hero__text-quote {
     font-size: 1rem;
+  }
+  main .section__gallery {
+    padding: 0 1rem;
+  }
+  main .section__gallery .gallery {
+    gap: 1rem;
   }
 }
 .section__filters {
