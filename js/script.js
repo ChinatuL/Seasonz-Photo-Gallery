@@ -10,12 +10,8 @@ function removeClass(el, clas) {
 
 function makeElement(type, properties, children) {
     const el = document.createElement(type);
-    if (properties) {
-        Object.assign(el, properties);
-    }
-    if (children) {
-        el.append(...children);
-    }
+    if (properties) Object.assign(el, properties);
+    if (children) el.append(...children);
     return el;
 }
 
@@ -27,38 +23,39 @@ const navList = document.getElementById("nav__list");
 const navHarmburger = document.getElementById("nav__harmburger");
 const navItem = document.querySelectorAll(".nav__item");
 
-function toggleMenu() {
-    navList.classList.toggle("open");
-    if (navList.classList.contains("open")) {
-        addClass(navHarmburger, "open");
-        navItem.forEach((item) => {
-            addClass(item, "open");
-        });
-    } else {
-        removeClass(navHarmburger, "open");
-        navItem.forEach((item) => {
-            removeClass(item, "open");
-        });
-    }
+function openNavbar() {
+    addClass(navList, "open");
+    addClass(navHarmburger, "open");
+    navItem.forEach((item) => {
+        addClass(item, "open");
+    });
 }
-navBtn.addEventListener("click", toggleMenu);
+
+function closeNavbar() {
+    removeClass(navList, "open");
+    removeClass(navHarmburger, "open");
+    navItem.forEach((item) => {
+        removeClass(item, "open");
+    });
+}
+
+function toggleMenu() {
+    navList.classList.contains("open") ? closeNavbar() : openNavbar();
+}
 
 function handleActiveNav(e) {
     navLinks.forEach((link) => removeClass(link, "active"));
     addClass(e, "active");
 }
 
+navBtn.addEventListener("click", toggleMenu);
+
 navLinks.forEach((link) => {
     link.addEventListener("click", () => {
         handleActiveNav(link);
-
         if (link.classList.contains("active")) {
+            closeNavbar();
             displayImagesByCategory(link.innerText.toLowerCase());
-            removeClass(navList, "open");
-            removeClass(navHarmburger, "open");
-            navItem.forEach((item) => {
-                removeClass(item, "open");
-            });
         }
     });
 });
@@ -71,18 +68,15 @@ window.addEventListener("scroll", (e) => {
     const navbar = document.querySelector(".nav");
     const navbarHeight = navbar.getBoundingClientRect().height;
 
-    if (e.currentTarget.scrollY > navbarHeight) {
-        addClass(navbar, "white-nav");
-    } else {
-        removeClass(navbar, "white-nav");
-    }
+    e.currentTarget.scrollY > navbarHeight
+        ? addClass(navbar, "nav__white")
+        : removeClass(navbar, "nav__white");
 });
 /******************************************* NAVBAR ********************************************/
 
 /******************************************* HERO SECTION ********************************************/
-const heroContainer = document.querySelector("hero__Images");
 let slideIndex = 1;
-const showSlides = () => {
+function showSlides() {
     const slideImages = document.querySelectorAll(".hero__images-img");
     slideImages.forEach((slide) => {
         slide.style.display = "none";
@@ -93,8 +87,8 @@ const showSlides = () => {
     }
     slideImages[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 5000);
-};
-showSlides(slideIndex);
+}
+showSlides();
 /******************************************* HERO SECTION ********************************************/
 
 /******************************************* FILTERS ********************************************/
@@ -117,10 +111,8 @@ inputElem.addEventListener("keyup", () => {
                 .toLowerCase()
                 .startsWith(inputValue.toLowerCase().trim());
         });
-
         displaySuggestions(inputValue);
     }
-
     selectFilter(inputElem);
 });
 
@@ -157,16 +149,14 @@ function selectFilter(input) {
 }
 
 function setRecents(filter) {
-    if (recentFilters.size === 5) {
-        recentFilters.delete([...recentFilters][0]);
-    }
+    if (recentFilters.size === 5) recentFilters.delete([...recentFilters][0]);
     recentFilters.add(filter);
 
     localStorage.setItem("recentFilters", JSON.stringify([...recentFilters]));
+    let storedFilters = JSON.parse(localStorage.getItem("recentFilters"));
 
-    let savedFilters = JSON.parse(localStorage.getItem("recentFilters"));
     let recentFilter = makeElement("li", null, null);
-    recentFilter.textContent = savedFilters.slice(-1)[0];
+    recentFilter.textContent = storedFilters.slice(-1)[0];
     recentFiltersElem.append(recentFilter);
 
     if (recentFiltersElem.children) {
@@ -191,7 +181,7 @@ form.addEventListener("submit", (e) => {
         displayImagesByFilter(inputElem.value);
         setRecents(inputElem.value.trim());
         inputElem.value = "";
-        return true;
+        return;
     }
 });
 /******************************************* FILTERS ********************************************/
@@ -226,6 +216,8 @@ function displayImagesByCategory(category) {
     const filteredImages = gallery.filter(
         (image) => image.category === category
     );
+    galleryHeading.textContent =
+        category.charAt(0).toUpperCase() + category.slice(1);
     displayImages(filteredImages);
     loadImagesByArray(filteredImages);
 }
@@ -234,12 +226,14 @@ function displayImagesByFilter(filter) {
     const filteredImages = gallery.filter((image) =>
         image.filters.includes(filter)
     );
+    galleryHeading.textContent =
+        filter.charAt(0).toUpperCase() + filter.slice(1);
     displayImages(filteredImages);
     loadImagesByArray(filteredImages);
 }
 
-function loadMoreImages(images, index) {
-    for (let i = index; i < index + 3; i++) {
+function loadMoreImages(images, startIndex) {
+    for (let i = startIndex; i < startIndex + 3; i++) {
         if (i >= images.length) {
             window.removeEventListener("scroll", imageScroll);
             return;
@@ -269,7 +263,7 @@ function imageScroll() {
     const documentHeight = document.documentElement.scrollHeight;
     const scrollPosition = window.scrollY;
 
-    if (windowHeight + scrollPosition >= documentHeight - 150) {
+    if (windowHeight + scrollPosition >= documentHeight - 200) {
         loadMoreImages(imagesArr, loadedImages);
         loadedImages += 3;
     }
@@ -279,6 +273,7 @@ function loadImagesByArray(images) {
     loadedImages = 3;
     galleryContainer.innerHTML = "";
     imagesArr = images;
+
     displayImages(images.slice(0, 3));
     window.addEventListener("scroll", imageScroll);
     galleryContainer.scroll({

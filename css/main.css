@@ -24,16 +24,16 @@ header .nav {
   padding: 1rem 3rem;
   width: 100%;
 }
-header .nav.white-nav {
+header .nav__white {
   background-color: #ffffff;
 }
-header .nav.white-nav .nav__logo-text {
+header .nav__white .nav__logo-text {
   color: #000000;
 }
-header .nav.white-nav .nav__link {
+header .nav__white .nav__link {
   color: #000000;
 }
-header .nav.white-nav .nav__link::after {
+header .nav__white .nav__link::after {
   background-color: #000000;
 }
 header .nav__logo {
@@ -147,13 +147,13 @@ header .hero__text-quote {
   header .nav__logo {
     width: 30%;
   }
-  header .nav.white-nav .nav__toggler-harmburger {
+  header .nav__white .nav__toggler-harmburger {
     background-color: #000000;
   }
-  header .nav.white-nav .nav__toggler-harmburger.open {
+  header .nav__white .nav__toggler-harmburger.open {
     background-color: transparent;
   }
-  header .nav.white-nav .nav__toggler-harmburger::before, header .nav.white-nav .nav__toggler-harmburger::after {
+  header .nav__white .nav__toggler-harmburger::before, header .nav__white .nav__toggler-harmburger::after {
     background-color: #000000;
   }
   header .nav__toggler-btn {
