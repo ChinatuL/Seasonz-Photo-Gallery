@@ -22,16 +22,15 @@ body {
 .loader-wrapper {
     position: fixed;
     z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    @include flex(row);
+    height: 100vh;
     width: 100%;
     overflow: hidden;
     background-color: white;
 
     .loader {
         position: relative;
+        top: 40vh;
         font-size: 5rem;
         font-weight: 700;
 

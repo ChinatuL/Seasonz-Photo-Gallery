@@ -1,147 +1,171 @@
 @media (max-width: 768px) {
-    header {
-        .nav {
-            padding: 1rem 1.5rem;
-            &__logo {
-                width: 30%;
-            }
-
-            &__white {
-              .nav__toggler-harmburger {
-                background-color: $black;
-
-                &.open {
-                  background-color: transparent;
+    body {
+        header {
+            .nav {
+                padding: 1rem 1.5rem;
+                &__logo {
+                    width: 30%;
                 }
 
-                &::before, &::after {
-                  background-color: $black;
+                &__white {
+                    .nav__toggler-harmburger {
+                        background-color: $black;
+
+                        &.open {
+                            background-color: transparent;
+                        }
+
+                        &::before,
+                        &::after {
+                            background-color: $black;
+                        }
+                    }
                 }
-              }
-            }
 
-            &__toggler-btn {
-                display: block;
-                border: none;
-                background: transparent;
-                width: 2rem;
-                height: 1rem;
+                &__toggler-btn {
+                    display: block;
+                    border: none;
+                    background: transparent;
+                    width: 2rem;
+                    height: 1rem;
 
-                &:hover {
-                    cursor: pointer;
-                    opacity: 80%;
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 80%;
+                    }
                 }
-            }
 
-            &__toggler-harmburger {
-                position: relative;
-                width: 100%;
-                height: 3px;
-                border-radius: 2rem;
-                background-color: $white;
-                @include transitionEase;
-
-                &::before,
-                &::after {
-                    position: absolute;
-                    content: "";
-                    left: 0;
+                &__toggler-harmburger {
+                    position: relative;
                     width: 100%;
                     height: 3px;
                     border-radius: 2rem;
                     background-color: $white;
-                }
-
-                &::before {
-                    top: -7px;
-                }
-
-                &::after {
-                    top: 7px;
-                }
-
-                &.open {
-                    background: transparent;
-                    transform: rotate(720deg);
+                    @include transitionEase;
 
                     &::before,
                     &::after {
-                        background-color: $black;
+                        position: absolute;
+                        content: "";
+                        left: 0;
+                        width: 100%;
+                        height: 3px;
+                        border-radius: 2rem;
+                        background-color: $white;
                     }
 
                     &::before {
-                        transform: rotate(45deg) translate(10px);
+                        top: -7px;
                     }
 
                     &::after {
-                        transform: rotate(-45deg) translate(9px);
+                        top: 7px;
+                    }
+
+                    &.open {
+                        background: transparent;
+                        transform: rotate(720deg);
+
+                        &::before,
+                        &::after {
+                            background-color: $black;
+                        }
+
+                        &::before {
+                            transform: rotate(45deg) translate(10px);
+                        }
+
+                        &::after {
+                            transform: rotate(-45deg) translate(9px);
+                        }
+                    }
+                }
+
+                &__list {
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    left: 100%;
+                    width: 50%;
+                    height: 100vh;
+                    padding: 0 2rem;
+                    background-color: $white;
+                    transition: left 0.3s ease-in-out;
+
+                    &.open {
+                        left: 50%;
+                    }
+                }
+
+                &__item {
+                    padding: 1rem 0;
+                    transform: translateX(100vw);
+                    @include menuTransition;
+
+                    &:first-of-type {
+                        padding-top: 3rem;
+                    }
+
+                    &.open {
+                        transform: translateX(0);
+                    }
+                }
+
+                &__link {
+                    color: $black;
+
+                    &::after {
+                        background-color: $black;
+                    }
+                }
+            }
+        }
+
+        main {
+            .section__filters {
+                .filters {
+                    &__form {
+                        &-input {
+                            width: 60%;
+                        }
+                    }
+
+                    &__list {
+                        width: 60%;
+                    }
+
+                    &__recents {
+                        &-list {
+                            & > li {
+                                margin-right: 1rem;
+                            }
+                        }
                     }
                 }
             }
 
-            &__list {
-                position: absolute;
-                display: block;
-                top: 0;
-                left: 100%;
-                width: 50%;
-                height: 100vh;
-                padding: 0 2rem;
-                background-color: $white;
-                transition: left 0.3s ease-in-out;
-
-                &.open {
-                    left: 50%;
-                }
-            }
-
-            &__item {
-                padding: 1rem 0;
-                transform: translateX(100vw);
-                @include menuTransition;
-
-                &:first-of-type {
-                    padding-top: 3rem;
+            .section__gallery {
+                .gallery {
+                    grid-template-columns: repeat(2, 1fr);
+                    margin-top: 2rem;
                 }
 
-                &.open {
-                    transform: translateX(0);
-                }
-            }
+                .lightbox {
+                    &__img {
+                        width: 70%;
+                    }
 
-            &__link {
-                color: $black;
+                    &__btn-prev {
+                        left: 5%;
+                    }
 
-                &::after {
-                    background-color: $black;
+                    &__btn-next {
+                        right: 5%;
+                    }
                 }
             }
         }
     }
-
-    main {
-      .section__filters {
-
-          .filters__recents {
-
-            &-list {
-              & > li {
-                margin-right: 1rem;
-              }
-            }
-          }
-        }
-
-        .section__gallery {
-
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    }
-
-
-    
 }
 @for $i from 1 through 4 {
     .nav__item:nth-child(#{$i}) {
@@ -150,31 +174,69 @@
 }
 
 @media (max-width: 480px) {
-  header {
-    
-    .hero {
+    body {
+        .loader-wrapper {
+            .loader {
+                font-size: 3rem;
 
-      &__text {
-        padding: 0 1rem;
-
-        &-heading {
-          font-size: 2rem;
+                &::before {
+                  height: 3rem;
+                }
+            }
         }
 
-        &-quote {
-          font-size: 1rem;
+        header {
+            .hero {
+                &__text {
+                    padding: 0 1rem;
+
+                    &-heading {
+                        font-size: 2rem;
+                    }
+
+                    &-quote {
+                        font-size: 1rem;
+                    }
+                }
+            }
         }
-      }
-    }
-  }
 
-  main {
-    .section__gallery {
-      padding: 0 1rem;
+        main {
+            .section__filters {
+                .filters {
+                    &__form {
+                        &-input {
+                            width: 80%;
+                        }
+                    }
 
-      .gallery {
-        gap: 1rem;
-      }
+                    &__list {
+                        width: 80%;
+                    }
+                }
+            }
+
+            .section__gallery {
+                padding: 0 1rem;
+
+                .gallery {
+                    gap: 1rem;
+                }
+
+                .lightbox {
+                    &__img {
+                        width: 80%;
+                    }
+
+                    &__btn-prev {
+                        left: 0.5%;
+                    }
+
+                    &__btn-next {
+                        right: 0.5%;
+                    }
+                }
+            }
+        }
     }
-  }
 }

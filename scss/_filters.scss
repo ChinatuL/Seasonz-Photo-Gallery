@@ -4,14 +4,17 @@
     align-items: center;
 
     .filters {
-        position: absolute;
-        top: 3rem;
+        position: relative;
         width: 100%;
         margin-bottom: 2rem;
 
         &__form {
+            position: absolute;
+            top: 2rem;
+            z-index: 3;
             @include flex(column);
             align-items: center;
+            width: 100%;
 
             &-control {
                 @include flex(row);
@@ -77,6 +80,8 @@
         }
 
         &__recents {
+            position: relative;
+            top: 5rem;
             display: flex;
             justify-content: center;
             align-items: center;

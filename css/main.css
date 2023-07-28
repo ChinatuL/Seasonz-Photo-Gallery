@@ -141,33 +141,33 @@ header .hero__text-quote {
 }
 
 @media (max-width: 768px) {
-  header .nav {
+  body header .nav {
     padding: 1rem 1.5rem;
   }
-  header .nav__logo {
+  body header .nav__logo {
     width: 30%;
   }
-  header .nav__white .nav__toggler-harmburger {
+  body header .nav__white .nav__toggler-harmburger {
     background-color: #000000;
   }
-  header .nav__white .nav__toggler-harmburger.open {
+  body header .nav__white .nav__toggler-harmburger.open {
     background-color: transparent;
   }
-  header .nav__white .nav__toggler-harmburger::before, header .nav__white .nav__toggler-harmburger::after {
+  body header .nav__white .nav__toggler-harmburger::before, body header .nav__white .nav__toggler-harmburger::after {
     background-color: #000000;
   }
-  header .nav__toggler-btn {
+  body header .nav__toggler-btn {
     display: block;
     border: none;
     background: transparent;
     width: 2rem;
     height: 1rem;
   }
-  header .nav__toggler-btn:hover {
+  body header .nav__toggler-btn:hover {
     cursor: pointer;
     opacity: 80%;
   }
-  header .nav__toggler-harmburger {
+  body header .nav__toggler-harmburger {
     position: relative;
     width: 100%;
     height: 3px;
@@ -175,7 +175,7 @@ header .hero__text-quote {
     background-color: #ffffff;
     transition: all 0.3s ease-in-out;
   }
-  header .nav__toggler-harmburger::before, header .nav__toggler-harmburger::after {
+  body header .nav__toggler-harmburger::before, body header .nav__toggler-harmburger::after {
     position: absolute;
     content: "";
     left: 0;
@@ -184,26 +184,26 @@ header .hero__text-quote {
     border-radius: 2rem;
     background-color: #ffffff;
   }
-  header .nav__toggler-harmburger::before {
+  body header .nav__toggler-harmburger::before {
     top: -7px;
   }
-  header .nav__toggler-harmburger::after {
+  body header .nav__toggler-harmburger::after {
     top: 7px;
   }
-  header .nav__toggler-harmburger.open {
+  body header .nav__toggler-harmburger.open {
     background: transparent;
     transform: rotate(720deg);
   }
-  header .nav__toggler-harmburger.open::before, header .nav__toggler-harmburger.open::after {
+  body header .nav__toggler-harmburger.open::before, body header .nav__toggler-harmburger.open::after {
     background-color: #000000;
   }
-  header .nav__toggler-harmburger.open::before {
+  body header .nav__toggler-harmburger.open::before {
     transform: rotate(45deg) translate(10px);
   }
-  header .nav__toggler-harmburger.open::after {
+  body header .nav__toggler-harmburger.open::after {
     transform: rotate(-45deg) translate(9px);
   }
-  header .nav__list {
+  body header .nav__list {
     position: absolute;
     display: block;
     top: 0;
@@ -214,31 +214,47 @@ header .hero__text-quote {
     background-color: #ffffff;
     transition: left 0.3s ease-in-out;
   }
-  header .nav__list.open {
+  body header .nav__list.open {
     left: 50%;
   }
-  header .nav__item {
+  body header .nav__item {
     padding: 1rem 0;
     transform: translateX(100vw);
     transition: transform 0.5s ease-in-out;
   }
-  header .nav__item:first-of-type {
+  body header .nav__item:first-of-type {
     padding-top: 3rem;
   }
-  header .nav__item.open {
+  body header .nav__item.open {
     transform: translateX(0);
   }
-  header .nav__link {
+  body header .nav__link {
     color: #000000;
   }
-  header .nav__link::after {
+  body header .nav__link::after {
     background-color: #000000;
   }
-  main .section__filters .filters__recents-list > li {
+  body main .section__filters .filters__form-input {
+    width: 60%;
+  }
+  body main .section__filters .filters__list {
+    width: 60%;
+  }
+  body main .section__filters .filters__recents-list > li {
     margin-right: 1rem;
   }
-  main .section__gallery .gallery {
+  body main .section__gallery .gallery {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+  body main .section__gallery .lightbox__img {
+    width: 70%;
+  }
+  body main .section__gallery .lightbox__btn-prev {
+    left: 5%;
+  }
+  body main .section__gallery .lightbox__btn-next {
+    right: 5%;
   }
 }
 .nav__item:nth-child(1) {
@@ -258,20 +274,41 @@ header .hero__text-quote {
 }
 
 @media (max-width: 480px) {
-  header .hero__text {
+  body .loader-wrapper .loader {
+    font-size: 3rem;
+  }
+  body .loader-wrapper .loader::before {
+    height: 3rem;
+  }
+  body header .hero__text {
     padding: 0 1rem;
   }
-  header .hero__text-heading {
+  body header .hero__text-heading {
     font-size: 2rem;
   }
-  header .hero__text-quote {
+  body header .hero__text-quote {
     font-size: 1rem;
   }
-  main .section__gallery {
+  body main .section__filters .filters__form-input {
+    width: 80%;
+  }
+  body main .section__filters .filters__list {
+    width: 80%;
+  }
+  body main .section__gallery {
     padding: 0 1rem;
   }
-  main .section__gallery .gallery {
+  body main .section__gallery .gallery {
     gap: 1rem;
+  }
+  body main .section__gallery .lightbox__img {
+    width: 80%;
+  }
+  body main .section__gallery .lightbox__btn-prev {
+    left: 0.5%;
+  }
+  body main .section__gallery .lightbox__btn-next {
+    right: 0.5%;
   }
 }
 .section__filters {
@@ -282,16 +319,19 @@ header .hero__text-quote {
   align-items: center;
 }
 .section__filters .filters {
-  position: absolute;
-  top: 3rem;
+  position: relative;
   width: 100%;
   margin-bottom: 2rem;
 }
 .section__filters .filters__form {
+  position: absolute;
+  top: 2rem;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .section__filters .filters__form-control {
   display: flex;
@@ -348,6 +388,8 @@ header .hero__text-quote {
   background-color: #f2f2f2;
 }
 .section__filters .filters__recents {
+  position: relative;
+  top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,9 +422,12 @@ header .hero__text-quote {
 
 .section__gallery {
   position: relative;
-  top: 4rem;
+  top: 2rem;
   padding: 0 3rem;
   width: 100%;
+}
+.section__gallery .gallery__subheading {
+  margin-top: 2rem;
 }
 .section__gallery .gallery {
   display: grid;
@@ -416,8 +461,8 @@ header .hero__text-quote {
 .section__gallery .lightbox__img {
   display: block;
   width: 60%;
-  height: 80%;
-  margin: 5% auto;
+  height: 100%;
+  margin: auto;
   overflow: hidden;
   -o-object-fit: contain;
      object-fit: contain;
@@ -495,15 +540,16 @@ body.loaded .loader {
   position: fixed;
   z-index: 1000;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   background-color: white;
 }
 .loader-wrapper .loader {
   position: relative;
+  top: 40vh;
   font-size: 5rem;
   font-weight: 700;
 }

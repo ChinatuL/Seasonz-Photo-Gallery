@@ -34,7 +34,7 @@ const gallery = [
         src: "https://i.postimg.cc/k5sBVchn/pexels-irina-iriser-1590549.jpg",
         alt: "Brown leaves hanging from a tree",
         category: "autumn",
-        filters: ["leaves", "sun"],
+        filters: ["leaves", "dry leaves", "sun"],
     },
     {
         id: 3,
