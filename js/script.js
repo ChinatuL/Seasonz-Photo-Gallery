@@ -1,6 +1,6 @@
 import { filters, gallery } from "./store.js";
 
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
     setTimeout(function () {
         document.querySelector("body").classList.add("loaded");
         document.querySelector("body").style.overflow = "auto";
