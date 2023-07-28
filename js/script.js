@@ -1,5 +1,12 @@
 import { filters, gallery } from "./store.js";
 
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        document.querySelector("body").classList.add("loaded");
+        document.querySelector("body").style.overflow = "auto";
+    }, 2000);
+});
+
 function addClass(el, clas) {
     el.classList.add(clas);
 }

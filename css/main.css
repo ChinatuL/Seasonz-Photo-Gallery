@@ -481,9 +481,41 @@ header .hero__text-quote {
 body {
   width: 100%;
   height: 100%;
-}
-body.overflow {
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+body.loaded .loader-wrapper {
+  visibility: hidden;
+}
+body.loaded .loader {
+  opacity: 0;
+}
+
+.loader-wrapper {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+}
+.loader-wrapper .loader {
+  position: relative;
+  font-size: 5rem;
+  font-weight: 700;
+}
+.loader-wrapper .loader::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+  border-left: 2px solid black;
+  background-color: white;
+  animation: animate 3s steps(7) infinite;
 }
 
 .container {
@@ -512,4 +544,13 @@ main {
 
 .subheading {
   font-weight: 400;
+}
+
+@keyframes animate {
+  40%, 60% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+  }
 }/*# sourceMappingURL=main.css.map */
