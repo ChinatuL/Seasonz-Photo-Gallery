@@ -400,10 +400,90 @@ header .hero__text-quote {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.section__gallery .lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  background-color: rgba(0, 0, 0, 0.85);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.section__gallery .lightbox__img {
+  display: block;
+  width: 60%;
+  height: 80%;
+  margin: 5% auto;
+  overflow: hidden;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.section__gallery .lightbox__img.zoom-in {
+  animation: zoomIn 0.5s;
+}
+.section__gallery .lightbox__img.zoom-out {
+  animation: zoomOut 0.5s;
+}
+.section__gallery .lightbox__btn {
+  position: absolute;
+  border: none;
+}
+.section__gallery .lightbox__btn-close {
+  top: 3rem;
+  left: 3rem;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.section__gallery .lightbox__btn-close:hover {
+  opacity: 50%;
+}
+.section__gallery .lightbox__btn-prev, .section__gallery .lightbox__btn-next {
+  top: 50%;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.section__gallery .lightbox__btn-prev {
+  left: 10%;
+}
+.section__gallery .lightbox__btn-prev:hover {
+  opacity: 50%;
+}
+.section__gallery .lightbox__btn-next {
+  right: 10%;
+}
+.section__gallery .lightbox__btn-next:hover {
+  opacity: 50%;
+}
 
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
 body {
   width: 100%;
   height: 100%;
+}
+body.overflow {
+  overflow: hidden;
 }
 
 .container {

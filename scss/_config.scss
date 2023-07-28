@@ -4,6 +4,7 @@ $dull-white: #f9f9f9;
 $light-gray: #f2f2f2;
 $black: #000000;
 $transparent: #00000080;
+$bg-lightbox: rgba(0, 0, 0, 0.85);
 $input-border: #00000033;
 
 :root {
@@ -12,7 +13,7 @@ $input-border: #00000033;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 *,
@@ -24,9 +25,9 @@ html {
 }
 
 @mixin flex($direction) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: center;
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
 }
 
 @mixin transitionEase {
@@ -36,4 +37,3 @@ html {
 @mixin menuTransition {
     transition: transform 0.5s ease-in-out;
 }
-

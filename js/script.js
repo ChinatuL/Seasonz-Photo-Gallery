@@ -187,7 +187,6 @@ form.addEventListener("submit", (e) => {
 /******************************************* FILTERS ********************************************/
 
 /******************************************* RENDER IMAGES ********************************************/
-
 const galleryContainer = document.querySelector(".gallery");
 const galleryHeading = document.querySelector(".gallery__subheading");
 
@@ -204,10 +203,16 @@ function displayImages(images) {
         const imageContainer = makeElement(
             "div",
             { className: "gallery__image" },
-            [makeElement("img", null, [])]
+            [makeElement("img", { className: "gallery__image-img" }, [])]
         );
         imageContainer.firstElementChild.setAttribute("src", `${image.src}`);
         imageContainer.firstElementChild.setAttribute("alt", `${image.alt}`);
+
+        let singleImg = imageContainer.firstElementChild;
+        singleImg.addEventListener("click", () => {
+            openLightbox(images, image.id);
+        });
+
         galleryContainer.append(imageContainer);
     });
 }
@@ -252,6 +257,11 @@ function loadMoreImages(images, startIndex) {
             `${images[i].alt}`
         );
 
+        let singleImg = imageContainer.firstElementChild;
+        singleImg.addEventListener("click", () => {
+            openLightbox(images, images[i].id);
+        });
+
         galleryContainer.append(imageContainer);
     }
 }
@@ -281,6 +291,56 @@ function loadImagesByArray(images) {
         behavior: "smooth",
     });
 }
-window.addEventListener("load", () => loadImagesByArray(gallery));
-
+window.addEventListener("load", () => {
+    loadImagesByArray(gallery);
+});
 /******************************************* RENDER IMAGES ********************************************/
+
+/************************************************* LIGHTBOX **********************************************/
+const lightbox = document.querySelector(".lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.getElementById("btn-close");
+const nextBtn = document.getElementById("btn-next");
+const prevBtn = document.getElementById("btn-prev");
+let imgIndex = 0;
+
+function openLightbox(images, imgId) {
+    imgIndex = images.findIndex((image) => image.id === imgId);
+    lightbox.style.display = "block";
+    changeLighboxImage();
+    removeClass(lightboxImg, "zoom-out");
+    addClass(lightboxImg, "zoom-in");
+}
+
+function changeLighboxImage() {
+    lightboxImg.src = imagesArr[imgIndex].src;
+    lightboxImg.alt = imagesArr[imgIndex].alt;
+}
+
+function navigateLightbox(step) {
+    imgIndex += step;
+    if (imgIndex < 0) {
+        imgIndex = imagesArr.length - 1;
+    } else if (imgIndex >= imagesArr.length) {
+        imgIndex = 0;
+    }
+    changeLighboxImage();
+}
+
+function closeLightbox() {
+    removeClass(lightboxImg, "zoom-in");
+    addClass(lightboxImg, "zoom-out");
+    setTimeout(() => {
+        lightbox.style.display = "none";
+    }, 500);
+}
+
+nextBtn.addEventListener("click", () => {
+    navigateLightbox(1);
+});
+prevBtn.addEventListener("click", () => {
+    navigateLightbox(-1);
+});
+closeBtn.addEventListener("click", closeLightbox);
+
+/************************************************* LIGHTBOX **********************************************/
