@@ -11,6 +11,7 @@ const filters = [
     "ocean",
     "rocks",
     "sea",
+    "sky",
     "snow",
     "stream",
     "sun",
@@ -27,7 +28,7 @@ const gallery = [
         src: "https://i.postimg.cc/ZRyzkYN1/pexels-eberhard-grossgasteiger-2310641.jpg",
         alt: "A field with trees and brown leaves",
         category: "autumn",
-        filters: ["trees"],
+        filters: ["trees", "grass", "dry leaves"],
     },
     {
         id: 2,
@@ -48,7 +49,7 @@ const gallery = [
         src: "https://i.postimg.cc/J0L4ssCW/pexels-josh-hild-14269090.jpg",
         alt: "A dog in a bush with dry grasses",
         category: "autumn",
-        filters: ["animal", "grass"],
+        filters: ["animal", "grass", "sun"],
     },
     {
         id: 5,
@@ -69,7 +70,7 @@ const gallery = [
         src: "https://i.postimg.cc/4yQtyCMB/pexels-luke-barky-2899722.jpg",
         alt: "A field with grass, fenced with a rope tied to poles",
         category: "autumn",
-        filters: ["sunset", "grass"],
+        filters: ["sunset", "grass", "sky"],
     },
     {
         id: 8,
@@ -83,7 +84,7 @@ const gallery = [
         src: "https://i.postimg.cc/9MG1dnKq/pexels-petar-star-evi-2389122.jpg",
         alt: "A field with dried grass and rolled up barn",
         category: "autumn",
-        filters: ["field", "grass"],
+        filters: ["field", "grass", "sky"],
     },
     {
         id: 10,
@@ -104,7 +105,7 @@ const gallery = [
         src: "https://i.postimg.cc/y6p3fPKJ/pexels-andreas-15985749.jpg",
         alt: "A field with trees and green grass",
         category: "spring",
-        filters: ["trees", "grass", "field"],
+        filters: ["trees", "grass", "field", "sky"],
     },
     {
         id: 13,
@@ -139,7 +140,7 @@ const gallery = [
         src: "https://i.postimg.cc/SQzFYSgn/pexels-maria-orlova-4906295.jpg",
         alt: "Blossoming flowers on a tree against clear blue sky",
         category: "spring",
-        filters: ["leaves", "flowers"],
+        filters: ["leaves", "flowers", "sky"],
     },
     {
         id: 18,
@@ -153,7 +154,7 @@ const gallery = [
         src: "https://i.postimg.cc/zvDxjknD/pexels-pixabay-86431.jpg",
         alt: "A field with grass and blossoming red flowers",
         category: "spring",
-        filters: ["flowers", "field", "grass", "clouds"],
+        filters: ["flowers", "field", "grass", "clouds", "sky"],
     },
     {
         id: 20,
@@ -167,7 +168,7 @@ const gallery = [
         src: "https://i.postimg.cc/cL6wcb25/pexels-asad-photo-maldives-3601421.jpg",
         alt: "Beach houses on the sea",
         category: "summer",
-        filters: ["sunset", "water", "sea"],
+        filters: ["sunset", "water", "sea", "sky", "clouds"],
     },
     {
         id: 22,
@@ -179,9 +180,9 @@ const gallery = [
     {
         id: 23,
         src: "https://i.postimg.cc/GpxLTcz0/pexels-james-wheeler-1486974.jpg",
-        alt: "Sunset with clear clouds reflecting on a lake",
+        alt: "Sunset with clouds reflecting on a lake",
         category: "summer",
-        filters: ["trees", "grass", "water", "clouds"],
+        filters: ["trees", "grass", "water", "clouds", "sky"],
     },
     {
         id: 24,
@@ -224,14 +225,14 @@ const gallery = [
         src: "https://i.postimg.cc/RhQyXF69/pexels-robert-so-15968083.jpg",
         alt: "A clear sky above a field with a tree and green grass",
         category: "summer",
-        filters: ["trees", "ocean", "water"],
+        filters: ["trees", "ocean", "water", "sky"],
     },
     {
         id: 30,
         src: "https://i.postimg.cc/W4k953CK/pexels-ryan-delfin-2270389.jpg",
         alt: "Tall palm trees",
         category: "summer",
-        filters: ["clouds", "trees"],
+        filters: ["clouds", "trees", "sky"],
     },
     {
         id: 31,
@@ -252,14 +253,14 @@ const gallery = [
         src: "https://i.postimg.cc/65zpYVv7/pexels-eberhard-grossgasteiger-1366919.jpg",
         alt: "A mountain partially covered with snow",
         category: "winter",
-        filters: ["snow", "rocks"],
+        filters: ["snow", "rocks", "sky"],
     },
     {
         id: 34,
         src: "https://i.postimg.cc/nr2pSZC8/pexels-eberhard-grossgasteiger-1417651.jpg",
         alt: "Mountain under a night sky with snow falling",
         category: "winter",
-        filters: ["field", "rocks", "snow"],
+        filters: ["field", "rocks", "snow", "sky"],
     },
     {
         id: 35,
@@ -294,7 +295,7 @@ const gallery = [
         src: "https://i.postimg.cc/fyF43bPv/pexels-rok-romih-3894112.jpg",
         alt: "A bird flying while it snows",
         category: "winter",
-        filters: ["animal", "snow"],
+        filters: ["animal", "snow", "sky"],
     },
     {
         id: 40,
