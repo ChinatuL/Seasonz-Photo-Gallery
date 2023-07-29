@@ -51,9 +51,14 @@ header {
             color: $white;
             position: relative;
 
-            &.active::after {
+            &.active {
+              font-weight: 500;
+
+              &::after {
                 width: 100%;
+              }
             }
+
 
             &::after {
                 content: "";
@@ -139,6 +144,11 @@ header {
             &-heading {
                 font-size: 3rem;
                 font-weight: 700;
+
+                & > span {
+                    font-size: 2rem;
+                    font-weight: 500;
+                }
             }
 
             &-quote {

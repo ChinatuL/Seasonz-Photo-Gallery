@@ -57,6 +57,9 @@ header .nav__link {
   color: #ffffff;
   position: relative;
 }
+header .nav__link.active {
+  font-weight: 500;
+}
 header .nav__link.active::after {
   width: 100%;
 }
@@ -134,6 +137,10 @@ header .hero__text-heading, header .hero__text-quote {
 header .hero__text-heading {
   font-size: 3rem;
   font-weight: 700;
+}
+header .hero__text-heading > span {
+  font-size: 2rem;
+  font-weight: 500;
 }
 header .hero__text-quote {
   font-family: "Fasthand", cursive;
@@ -285,6 +292,9 @@ header .hero__text-quote {
   }
   body header .hero__text-heading {
     font-size: 2rem;
+  }
+  body header .hero__text-heading > span {
+    font-size: 1.5rem;
   }
   body header .hero__text-quote {
     font-size: 1rem;
