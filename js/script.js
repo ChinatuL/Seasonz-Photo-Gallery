@@ -1,12 +1,5 @@
 import { filters, gallery } from "./store.js";
 
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        document.querySelector("body").classList.add("loaded");
-        document.querySelector("body").style.overflow = "auto";
-    }, 2000);
-});
-
 function addClass(el, clas) {
     el.classList.add(clas);
 }
@@ -21,6 +14,15 @@ function makeElement(type, properties, children) {
     if (children) el.append(...children);
     return el;
 }
+
+window.addEventListener("load", function () {
+    let body = document.querySelector("body");
+    setTimeout(function () {
+        addClass(body, "loaded");
+        body.style.overflow = "auto";
+    }, 2000);
+    getRecentFilters();
+});
 
 /******************************************* NAVBAR ********************************************/
 const navBtn = document.getElementById("navbar__btn");
@@ -89,6 +91,7 @@ function showSlides() {
         slide.style.display = "none";
     });
     slideIndex++;
+
     if (slideIndex > slideImages.length) {
         slideIndex = 1;
     }
@@ -100,17 +103,16 @@ showSlides();
 
 /******************************************* FILTERS ********************************************/
 const inputElem = document.querySelector(".filters__form-input");
-const filtersElem = document.querySelector(".filters__list");
+const filtersList = document.querySelector(".filters__list");
 const recentFiltersElem = document.querySelector(".filters__recents-list");
 let suggestions = [];
-let recentFilters = new Set();
 
 inputElem.addEventListener("keyup", () => {
     const inputValue = inputElem.value;
     const submitBtn = document.querySelector(".filters__form-btn");
 
     clearSuggestions();
-    removeClass(filtersElem, "show");
+    removeClass(filtersList, "show");
     if (inputValue.trim()) {
         submitBtn.removeAttribute("disabled");
         suggestions = filters.filter((suggestion) => {
@@ -134,13 +136,13 @@ function displaySuggestions(input) {
             word.substring(input.trim().length);
         listItem.innerHTML = match;
 
-        filtersElem.append(listItem);
-        addClass(filtersElem, "show");
+        filtersList.append(listItem);
+        addClass(filtersList, "show");
     });
 }
 
 function clearSuggestions() {
-    filtersElem.innerHTML = "";
+    filtersList.innerHTML = "";
 }
 
 function selectFilter(input) {
@@ -148,36 +150,43 @@ function selectFilter(input) {
 
     suggestions.forEach((suggestion) =>
         suggestion.addEventListener("click", (e) => {
-            input.value = e.target.innerText;
+            input.value = e.currentTarget.innerText;
             clearSuggestions();
-            removeClass(filtersElem, "show");
+            removeClass(filtersList, "show");
         })
     );
 }
 
-function setRecents(filter) {
-    if (recentFilters.size === 5) recentFilters.delete([...recentFilters][0]);
+let recentFilters = new Set();
+function setRecentFilters(filter) {
+    if (recentFilters.size === 5) {
+        recentFilters.delete([...recentFilters][0]);
+    }
     recentFilters.add(filter);
-
     localStorage.setItem("recentFilters", JSON.stringify([...recentFilters]));
+}
+
+function getRecentFilters() {
     let storedFilters = JSON.parse(localStorage.getItem("recentFilters"));
 
-    let recentFilter = makeElement("li", null, null);
-    recentFilter.textContent = storedFilters.slice(-1)[0];
-    recentFiltersElem.append(recentFilter);
+    storedFilters.forEach((filter) => {
+        let recentFilter = makeElement("li", null, null);
+        recentFilter.textContent = filter;
+        recentFiltersElem.append(recentFilter);
 
-    if (recentFiltersElem.children) {
-        addClass(recentFiltersElem.previousElementSibling, "show");
-        addClass(recentFiltersElem, "show");
-    }
+        if (recentFiltersElem.children) {
+            addClass(recentFiltersElem.previousElementSibling, "show");
+            addClass(recentFiltersElem, "show");
+        }
 
-    if (recentFilter.isEqualNode(recentFilter.previousElementSibling)) {
-        recentFilter.remove();
-    }
+        if (recentFilter.isEqualNode(recentFilter.previousElementSibling)) {
+            recentFilter.remove();
+        }
 
-    if (recentFiltersElem.children.length === 6) {
-        recentFiltersElem.firstElementChild.remove();
-    }
+        if (recentFiltersElem.children.length === 6) {
+            recentFiltersElem.firstElementChild.remove();
+        }
+    });
 }
 
 const form = document.querySelector(".filters__form");
@@ -186,7 +195,8 @@ form.addEventListener("submit", (e) => {
 
     if (inputElem.value.trim() && filters.includes(inputElem.value.trim())) {
         displayImagesByFilter(inputElem.value);
-        setRecents(inputElem.value.trim());
+        setRecentFilters(inputElem.value.trim());
+        getRecentFilters();
         inputElem.value = "";
         return;
     }

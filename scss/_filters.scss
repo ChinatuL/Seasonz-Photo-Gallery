@@ -47,7 +47,7 @@
                 @include transitionEase;
 
                 &:hover > svg > path {
-                    fill: $black;
+                    fill: $input-border;
                 }
             }
         }
