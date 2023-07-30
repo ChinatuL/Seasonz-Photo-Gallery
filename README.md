@@ -18,6 +18,7 @@ It is built with HTML, SCSS and JavaScript.
 -   JavaScript
 
 ## Demo
+[Seasonz-demo.webm](https://github.com/ChinatuL/Seasonz-Photo-Gallery/assets/97689140/f3c61d0e-190c-4277-a910-fbc0def3282b)
 
 ## Live Site
 
