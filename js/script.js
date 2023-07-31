@@ -104,7 +104,7 @@ showSlides();
 /******************************************* FILTERS ********************************************/
 const inputElem = document.querySelector(".filters__form-input");
 const filtersList = document.querySelector(".filters__list");
-const recentFiltersElem = document.querySelector(".filters__recents-list");
+const recentFiltersList = document.querySelector(".filters__recents-list");
 let suggestions = [];
 
 inputElem.addEventListener("keyup", () => {
@@ -170,21 +170,34 @@ function getRecentFilters() {
     let storedFilters = JSON.parse(localStorage.getItem("recentFilters"));
 
     storedFilters.forEach((filter) => {
-        let recentFilter = makeElement("li", null, null);
+        let recentFilter = makeElement(
+            "li",
+            { className: "filters__recents-item" },
+            null
+        );
         recentFilter.textContent = filter;
-        recentFiltersElem.append(recentFilter);
+        recentFiltersList.append(recentFilter);
 
-        if (recentFiltersElem.children) {
-            addClass(recentFiltersElem.previousElementSibling, "show");
-            addClass(recentFiltersElem, "show");
+        const recentFilterItems = document.querySelectorAll(
+            ".filters__recents-item"
+        );
+        const recentFiltersMap = new Map();
+        recentFilterItems.forEach((item) => {
+            const text = item.textContent;
+            if (recentFiltersMap.has(text)) {
+                item.remove();
+            } else {
+                recentFiltersMap.set(text, true);
+            }
+        });
+
+        if (recentFiltersList.children) {
+            addClass(recentFiltersList.previousElementSibling, "show");
+            addClass(recentFiltersList, "show");
         }
 
-        if (recentFilter.isEqualNode(recentFilter.previousElementSibling)) {
-            recentFilter.remove();
-        }
-
-        if (recentFiltersElem.children.length === 6) {
-            recentFiltersElem.firstElementChild.remove();
+        if (recentFiltersList.children.length === 6) {
+            recentFiltersList.firstElementChild.remove();
         }
     });
 }
